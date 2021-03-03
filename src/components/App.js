@@ -1,15 +1,22 @@
 import React, {Component, useState} from "react";
 import '../styles/App.css';
 
-class App extends Component {
-    render() {
+const App =()=>{
 
-        return(
-            <>
-               
-            </>
-        )
+    let time = new Date().toLocaleTimeString('en-US');
+    const [currentTime, setCurrentTime] = React.useState(time);
+
+    const updateTime=()=>{
+        let time = new Date().toLocaleTimeString('en-US');
+        setCurrentTime(time);
     }
+
+    setTimeout(updateTime,1000)
+    return(
+        <>
+        <h1>{currentTime}</h1>
+        </>
+    )
 }
 
 
