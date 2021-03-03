@@ -14,8 +14,8 @@ const App =()=>{
     setTimeout(updateTime,1000)
     return(
         <>
-        <div className="time">
-        <h1>{currentTime}</h1>
+        <div className="Clock" >
+        <h1 id="time" >{currentTime}</h1>
         </div>
         </>
     )
