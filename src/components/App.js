@@ -1,25 +1,35 @@
-import React, {Component, useState} from "react";
-import '../styles/App.css';
+import React, { Component, useState } from "react";
+import "../styles/App.css";
 
-const App =()=>{
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      time: new Date().toLocaleTimeString(),
+    };
+  }
 
-    let time = new Date().toLocaleTimeString('en-US');
-    const [currentTime, setCurrentTime] = React.useState(time);
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 1000);
+  }
 
-    const updateTime=()=>{
-        let time = new Date().toLocaleTimeString('en-US');
-        setCurrentTime(time);
-    }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
 
-    setTimeout(updateTime,1000)
-    return(
-        <>
-        <div className="Clock" >
-        <h1 id="time" >{currentTime}</h1>
-        </div>
-        </>
-    )
+  tick() {
+    this.setState({
+      time: new Date().toLocaleTimeString(),
+    });
+  }
+
+  render() {
+    return (
+      <div className="Clock">
+        <h3 id="time">{this.state.time}</h3>
+      </div>
+    );
+  }
 }
-
 
 export default App;
